@@ -1,6 +1,5 @@
 import { mdsvex } from "mdsvex";
 import adapter from '@sveltejs/adapter-static';
-
 import preprocess from "svelte-preprocess"
 
 const dev = process.argv.includes("dev");
@@ -13,7 +12,7 @@ const config = {
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: adapter(),
 		paths: {
-		    base: dev ? "" : "azalea-web",
+		    base: dev ? "" : "/azalea-web",
 		    
 		},
 		prerender: {
@@ -21,7 +20,7 @@ const config = {
 		},
 	},
 
-    preprocess: [mdsvex(), preprocess()],
+    preprocess: [mdsvex(), preprocess({postcss: true})],
     extensions: [".svelte", ".svx"]
 };
 
